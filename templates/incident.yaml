@@ -1,0 +1,28 @@
+incident_id: INC-{{NUMBER}}
+date: {{DATE}}
+session_id: {{SESSION_ID}}
+severity: {{CRITICAL|HIGH|MEDIUM|LOW}}
+
+title: {{One-line summary}}
+
+operation: {{What was being done}}
+what_happened: {{What went wrong — facts only}}
+root_cause: {{Why it went wrong}}
+discovery: {{How it was discovered — immediately? hours later? next session?}}
+
+tools_involved:
+  - {{mcp__tool__name}}
+
+what_caught_it: {{What actually caught the failure, or "nothing — discovered manually"}}
+what_would_catch_it: {{What check/gate would have prevented this}}
+
+runbook_gate:
+  runbook: {{rb-name or "NONE"}}
+  step: {{step_id or "NONE"}}
+  status: {{COVERED|GAP}}
+  recommendation: {{If GAP: what gate to add}}
+
+evidence:
+  quotes: []
+  log_lines: []
+  error_messages: []
