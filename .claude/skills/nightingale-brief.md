@@ -8,9 +8,14 @@ User says `/nightingale brief` or asks "what's exposed?"
 
 ## Instructions
 
-### Step 1: Load incidents and runbooks
+### Step 1: Load incidents and any available protective layers
 
-Read `.nightingale/incidents/` and `.stepproof/runbooks/`.
+Read `.nightingale/incidents/`. Then opportunistically read whichever protective layers exist in this project:
+- `.stepproof/runbooks/` (if StepProof is in use)
+- `.claude/skills/` (skill-based guardrails)
+- any forge-specific rule files
+
+An incident is "protected" if *any* of those layers covers it, not only runbooks.
 
 ### Step 2: Find the top 5 unprotected failure modes
 
@@ -22,16 +27,16 @@ Rank by: severity (CRITICAL > HIGH > MEDIUM > LOW), then by repeat count (more r
 ## Nightingale Brief — {{project}} — {{date}}
 
 ### Top unprotected failure modes:
-1. [CRITICAL] {{title}} — {{N}} occurrence(s), no runbook gate
-2. [HIGH] {{title}} — {{N}} occurrence(s), no runbook gate
+1. [CRITICAL] {{title}} — {{N}} occurrence(s), no protective gate
+2. [HIGH] {{title}} — {{N}} occurrence(s), no protective gate
 ...
 
 ### Coverage: {{M}}/{{total}} incidents protected ({{X}}%)
 
-### Action: Create runbook gates for items 1-3 to reach {{Y}}% coverage.
+### Action: Add a protective gate for items 1-3. Natural home: {{runbook | skill | forge rule | pre-flight check}}.
 ```
 
-If coverage is 100%: "All cataloged failure modes are protected by runbook gates."
+If coverage is 100%: "All cataloged failure modes are protected."
 
 ## Rules
 
